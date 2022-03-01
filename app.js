@@ -5,10 +5,9 @@
     inputFilt.value = '';
     if(inputvalu == ''){
         console.log('rong input');
-    }else if(inputFilt.length === 0){
-        console.log('pleash carent value');
-
     }else{
+        const thamnail = document.getElementById('thamnail')
+        thamnail.style.display = 'none'
         const url = `https://openapi.programming-hero.com/api/phones?search=${inputvalu}`
         fetch(url)
         .then(res=>res.json())
@@ -31,7 +30,7 @@
         <div class=" ">
              <img  src="${prodact.image}" class="img-fluid" alt="...">
              <div class="card-body">
-               <h5 class="card-title text-white">${prodact.phone_name}</h5>
+               <h5 class="card-title text-primary">${prodact.phone_name}</h5>
                <p class="card-text text-white">${prodact.slug}</p>
 
                <button class="btn btn-success" onclick="prodactInfo('${prodact.slug}')">About device</button>
@@ -45,35 +44,38 @@
 
 
  const prodactInfo = (name)=>{
-   
     detelsUrl = `https://openapi.programming-hero.com/api/phone/${name}`
     fetch(detelsUrl)
     .then(res=>res.json())
     .then(data=>cardDetels(data.data))
  }
 
+
+
  const cardDetels = (detels)=>{
     const cardinfo = detels.mainFeatures
-    console.log(cardinfo);
-     const detelsContainer = document.getElementById('detels-card')
-        // console.log(card);
+   
+    const detelsContainer = document.getElementById('detels-card')
+    detelsContainer.textContent=''
+        // card detells
         const creatDiv = document.createElement('div')
-        creatDiv.classList.add('d-flex')
-        creatDiv.classList.add('justify-content-evenly')
+        
+        creatDiv.classList.add('row')
+       
         creatDiv.innerHTML = `
-            <div class="">
+            <div class="col">
                 <img width="250px" src="${detels.image}" alt="">
             </div>
-            <div class="text-white ">
-            <p> memory:${cardinfo.memory}</p>
-                <p>${cardinfo.storage}</p>
+            <div class="text-white col">
+            <p> memory: ${cardinfo.memory}</p>
+                <p>storage: ${cardinfo.storage}</p>
                 
                 <p>chipSet:${cardinfo.chipSet}</p>
-                <p>chipSet:${cardinfo.displaySize}</p>
+                <p>displaySize: ${cardinfo.displaySize}</p>
                 <button class="btn btn-success">BY NOW</button>
             </div> 
                 `
         detelsContainer.appendChild(creatDiv)
-        
+         
  }
  
