@@ -21,7 +21,7 @@
      const container = document.getElementById('container')
      container.textContent = '';
     prodacts.forEach(prodact => {
-        console.log(prodact);
+        // console.log(prodact);
         const div = document.createElement('div')
         div.classList.add('col-lg-4')
         div.classList.add('col-sm-12')
@@ -34,7 +34,7 @@
                <h5 class="card-title text-white">${prodact.phone_name}</h5>
                <p class="card-text text-white">${prodact.slug}</p>
 
-               <button class="btn btn-success" onclick="prodactInfo(${prodact = prodact.slug})">About device</button>
+               <button class="btn btn-success" onclick="prodactInfo('${prodact.slug}')">About device</button>
          </div>      
            
         `;
@@ -44,6 +44,36 @@
  }
 
 
- const prodactInfo = (prodact)=>{
-    console.log(prodact);
+ const prodactInfo = (name)=>{
+   
+    detelsUrl = `https://openapi.programming-hero.com/api/phone/${name}`
+    fetch(detelsUrl)
+    .then(res=>res.json())
+    .then(data=>cardDetels(data.data))
  }
+
+ const cardDetels = (detels)=>{
+    const cardinfo = detels.mainFeatures
+    console.log(cardinfo);
+     const detelsContainer = document.getElementById('detels-card')
+        // console.log(card);
+        const creatDiv = document.createElement('div')
+        creatDiv.classList.add('d-flex')
+        creatDiv.classList.add('justify-content-evenly')
+        creatDiv.innerHTML = `
+            <div class="">
+                <img width="250px" src="${detels.image}" alt="">
+            </div>
+            <div class="text-white ">
+            <p> memory:${cardinfo.memory}</p>
+                <p>${cardinfo.storage}</p>
+                
+                <p>chipSet:${cardinfo.chipSet}</p>
+                <p>chipSet:${cardinfo.displaySize}</p>
+                <button class="btn btn-success">BY NOW</button>
+            </div> 
+                `
+        detelsContainer.appendChild(creatDiv)
+        
+ }
+ 
