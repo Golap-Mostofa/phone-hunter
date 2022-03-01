@@ -21,7 +21,7 @@
     }
    
  }
-
+   // main card
  const hendelClick = (prodacts)=>{
      const container = document.getElementById('container')
      container.textContent = '';
@@ -60,7 +60,7 @@
     
  }
 
-
+// daynamic url
  const prodactInfo = (name)=>{
     detelsUrl = `https://openapi.programming-hero.com/api/phone/${name}`
     fetch(detelsUrl)
@@ -69,13 +69,13 @@
  }
 
 
-
+// card detells
  const cardDetels = (detels)=>{
     const cardinfo = detels.mainFeatures
    
     const detelsContainer = document.getElementById('detels-card')
     detelsContainer.textContent=''
-        // card detells
+        
         const creatDiv = document.createElement('div')
         
         creatDiv.classList.add('row')
