@@ -1,0 +1,29 @@
+
+
+ body{
+    background-color: #001219;
+    height: 100vh;
+}
+#error{
+    display: none;
+}
+
+.footer{
+    background-color: #FBE6C2;
+    
+    text-align: center;
+    padding: 1em;
+  }
+  .footer h2{
+    color: #8500cc;
+  }
+  .footer h6{
+    color: #090910;
+  }
+  
+  .socal-medea i{
+   
+    font-size: 2em;
+    padding: 1%;
+    margin: 0 2%; 
+  }
