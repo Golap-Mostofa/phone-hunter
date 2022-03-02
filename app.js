@@ -17,7 +17,7 @@
         const url = `https://openapi.programming-hero.com/api/phones?search=${inputvalu}`
         fetch(url)
         .then(res=>res.json())
-        .then(data=>hendelClick(data.data))
+        .then(data=>hendelClick(data.data.slice(0,25)))
     }
    
  }
